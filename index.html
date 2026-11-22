@@ -801,10 +801,6 @@
   justify-content:center;
 }
 
-.slide-btn:hover{
-  background:var(--gold);
-  color:var(--dark);
-}
 
 .prev{
   left:20px;
@@ -814,13 +810,8 @@
   right:20px;
 }
 
-.slide-dots{
-  display:flex;
-  justify-content:center;
-  gap:12px;
 
-  margin-top:30px;
-}
+
 
 .dot{
   width:12px;
@@ -1085,113 +1076,7 @@
   </div>
 </section>
 
-<!-- About -->
-<section class="about" id="about">
-<div class="instructor-wrap">
-<button class="slide-btn prev">◀︎</button>
-<div class="slides">
-  <div class="about-slide">
-  <div class="about-inner">
-    <div class="about-visual reveal">
-      <div class="about-img-frame">
-        <img src="content2.png" alt="講師写真" class="about-img">
-        <div class="about-corner tl"></div>
-        <div class="about-corner br"></div>
-      </div>
-      <div class="about-tag-float">
-        <span class="big">12</span>
-        <span class="small">YEARS OF<br>LIVE TRADING</span>
-      </div>
-    </div>
-    <div class="about-content reveal">
-      <div class="section-tag">INSTRUCTOR</div>
-      <h2>高梨 祐介</h2>
-      <p style="color:var(--text-muted); font-size:15px; line-height:1.9; margin: 20px 0;">
-        独立トレーダーとして累計利益5000万円を達成。現在はFX教育に専念し、約200名以上の受講者を指導。損切りの哲学から資金管理まで、再現性のある手法を体系化。
-      </p>
-      <div class="profile-list">
-        <div class="profile-item">
-          <div class="profile-icon">🏦</div>
-          <div class="profile-text">
-            <div class="profile-title">元・システムエンジニア（5年）</div>
-            <div class="profile-desc">大手総合商社のSEとしてプロジェクトマネージャーをしていた。</div>
-          </div>
-        </div>
-        <div class="profile-item">
-          <div class="profile-icon">📈</div>
-          <div class="profile-text">
-            <div class="profile-title">独立後・累計利益5,700万円</div>
-            <div class="profile-desc">スキャルピング〜スイングまで複数スタイルを運用</div>
-          </div>
-        </div>
-        <div class="profile-item">
-          <div class="profile-icon">🎓</div>
-          <div class="profile-text">
-            <div class="profile-title">受講者200名以上</div>
-            <div class="profile-desc">初心者〜中級者を対象に、脱感情トレードを重点指導</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- 講師2 -->
- <div class="about-slide">
-  <div class="about-inner">
-    <div class="about-visual reveal">
-      <div class="about-img-frame">
-        <img src="content.png" alt="講師写真" class="about-img">
-        <div class="about-corner tl"></div>
-        <div class="about-corner br"></div>
-      </div>
-      <div class="about-tag-float">
-        <span class="big">12</span>
-        <span class="small">YEARS OF<br>LIVE TRADING</span>
-      </div>
-    </div>
-      <div class="about-content reveal">
-      <div class="section-tag">INSTRUCTOR</div>
-      <h2>滝村 剛</h2>
-      <p style="color:var(--text-muted); font-size:15px; line-height:1.9; margin: 20px 0;">
-        独立トレーダーとして累計利益3000万円を達成。現在も個人のトレーダーとして活動しており、FX教育も少ししています。約200名以上の受講者を指導。損切りの哲学から資金管理まで、再現性のある手法を体系化。
-      </p>
-      <div class="profile-list">
-        <div class="profile-item">
-          <div class="profile-icon">🏦</div>
-          <div class="profile-text">
-            <div class="profile-title">元・大手証券会社 為替ディーラー（6年）</div>
-            <div class="profile-desc">機関投資家レベルのオーダーフロー分析・マーケット構造の理解</div>
-          </div>
-        </div>
-        <div class="profile-item">
-          <div class="profile-icon">📈</div>
-          <div class="profile-text">
-            <div class="profile-title">独立後、累計利益3800万円</div>
-            <div class="profile-desc">スキャルピング〜スイングまで複数スタイルを運用</div>
-          </div>
-        </div>
-        <div class="profile-item">
-          <div class="profile-icon">🎓</div>
-          <div class="profile-text">
-            <div class="profile-title">受講者200名以上</div>
-            <div class="profile-desc">初心者〜中級者を対象に、脱感情トレードを重点指導</div>
-          </div>
-        </div>
-      </div>
-    </div> <!-- about-content -->
-  </div> <!-- about-inner -->
-</div> <!-- about-slide -->
 
-</div> <!-- slides -->
-
-<button class="slide-btn next">▶︎</button>
-
-<div class="slide-dots">
-  <span class="dot active"></span>
-  <span class="dot"></span>
-</div>
-
-</section>
 
 <!-- Courses -->
 <section class="courses" id="courses">
@@ -1412,7 +1297,6 @@
       <div class="footer-col">
         <h4>LEARN</h4>
         <a href="#results">トレード実績</a>
-        <a href="#about">講師紹介</a>
         <a href="#courses">講座一覧</a>
         <a href="#faq">FAQ</a>
       </div>
@@ -1514,7 +1398,27 @@
     if (e.target === this) closeModal();
   });
 
-function submitForm() {
+let selectedPlan = '';
+
+function openModal(planName, price, planCode) {
+
+  selectedPlan = planCode;
+
+  document.getElementById('modal-title').textContent =
+    planName + ' — 無料体験申し込み';
+
+  document.getElementById('modal-plan').textContent =
+    planCode + ' PLAN';
+
+  document.getElementById('modal-price').textContent =
+    price;
+
+  document.getElementById('modal').classList.add('active');
+
+  document.body.style.overflow = 'hidden';
+}
+
+async function submitForm() {
 
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
@@ -1523,57 +1427,52 @@ function submitForm() {
   const goal = document.getElementById('goal').value;
 
   if (!name || !email) {
+
     alert('名前とメールアドレスを入力してください');
+
     return;
+
   }
 
-  const templateParams = {
-    name: name,
-    email: email,
-    phone: phone,
-    experience: experience,
-    goal: goal
-  };
+  try {
 
-  emailjs.send(
-    'service_hg2fpi5',
-    'template_6odkpp1',
-    templateParams
-  )
-   emailjs.send(
-    'service_hg2fpi5',
-    'template_djyqq8y',
-    templateParams
-  )
-  .then(function(response) {
+    const response = await fetch('http://localhost:3000/create-checkout-session', {
 
-    document.getElementById('modal-content').innerHTML = `
-      <div class="success-modal">
-        <div class="success-icon">✅</div>
-        <div class="success-title">申し込み完了！</div>
+      method: 'POST',
 
-        <p class="success-text" style="margin-top:16px;">
-          ご登録メールアドレスへ確認メールを送信しました。
-          24時間以内にDiscord招待リンクをお送りします
-          7日間の無料体験をお楽しみください
-        </p>
+      headers: {
+        'Content-Type': 'application/json'
+      },
 
-        <button class="plan-btn gold"
-          style="margin-top:32px; max-width:200px;"
-          onclick="closeModal()">
-          閉じる
-        </button>
-      </div>
-    `;
+      body: JSON.stringify({
 
-  })
-  .catch(function(error) {
+        name,
+        email,
+        phone,
+        experience,
+        goal,
+        plan: selectedPlan
+
+      })
+
+    });
+
+    const session = await response.json();
+
+
+    await stripe.redirectToCheckout({
+
+      sessionId: session.id
+
+    });
+
+  } catch (error) {
 
     console.log(error);
 
-    alert('メール送信に失敗しました');
+    alert('Stripe決済エラー');
 
-  });
+  }
 
 }
 
@@ -1699,6 +1598,7 @@ showSlide(0);
 <script>
   emailjs.init("H6y7JKl-ehVkkbduN");
 </script>
+<script src="https://js.stripe.com/v3/"></script>
 </body>
 
 </html>
